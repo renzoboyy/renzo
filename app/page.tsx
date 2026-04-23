@@ -1,19 +1,7 @@
-import Image from "next/image";
+
 import { Inter, Poppins } from "next/font/google";
-import { GitHubCalendar } from 'react-github-calendar';
 import './globals.css';
-
-type ColorPalette = [string, string, string, string, string];
-
-interface ThemeInput {
-  light: ColorPalette;
-  dark: ColorPalette;
-}
-
-const explicitTheme: ThemeInput = {
-  light: ['#999999', '#997A7A', '#995454', '#992A2A', '#FF0000'],
-  dark: ['#383838', '#4D455D', '#7DB9B6', '#F5E9CF', '#E96479'],
-}
+import GithubCalendar from "./components/GithubCalendar";
 
 const interFontBold = Inter({
   subsets: ["latin"],
@@ -27,7 +15,7 @@ const poppins = Poppins({
 export default function Home() {
   return (
     <main>
-      <div className="h-screen w-full flex 
+      <div className="w-full flex 
       items-center justify-center">
         <div className="grid h-full w-full
         grid-cols-4 grid-rows-3 gap-3 p-20
@@ -45,22 +33,12 @@ export default function Home() {
           rounded-xl"></div>
           <div className="col-span-2 row-span-1 bg-gray-900
           rounded-xl"></div>
-          <div className="col-span-2 row-span-1 bg-gray-900
-          rounded-xl">
-          </div>
           <div className="col-span-1 row-span-1 bg-gray-900
           rounded-xl">
             <div className={`ml-4 mt-2 text-3xl ${interFontBold.className}`}>
               GitHub
               <div className={`mt-2 mr-4 text-lg ${poppins.className}`}>
-                <GitHubCalendar 
-                username="renzoboyy"
-                colorScheme="light" 
-                theme={explicitTheme}
-                labels={{
-                  totalCount: '{{count}} contributions in the last year',
-                }}
-                />
+                <GithubCalendar />
               </div>
             </div>
           </div>
