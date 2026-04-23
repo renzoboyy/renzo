@@ -22,7 +22,7 @@ body {
 }
 
 body::before {
-  background-image: url("./assets/Background.jpg");
+  background-image: url("/assets/Background.jpg");
   filter: blur(5px) brightness(.2);
   content: "";
   position:absolute;
