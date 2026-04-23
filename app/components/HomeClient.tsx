@@ -68,19 +68,21 @@ export default function HomeClient({ stravaSlot }: HomeClientProps) {
               </a>
             </motion.div>
 
+            {/* Strava */}
             <motion.div
               className="col-span-1 row-span-1 
               bg-gray-900/90 backdrop-blur-sm rounded-2xl p-4 md:p-5 lg:p-6 flex flex-col justify-between"
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-                <h2 className={`text-3xl mb-2 ${interFontBold.className}`}>
-                Strava
-              </h2>
+              <Image src="/assets/icons/Strava.png"
+              alt="strava icon"
+              width={100}
+              height={100}  />
               <Image
                 src={ItsMe}
-                alt=""
-                className="absolute inset-0 w-full h-full object-cover opacity-40"
+                alt="cute portrait of me"
+                className="absolute inset-0 w-full h-full object-cover opacity-40 transform -scale-x-100"
               />
 
               <div className="relative z-10">{stravaSlot}</div>
