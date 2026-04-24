@@ -1,11 +1,11 @@
 "use client";
 import Image from "next/image"
-import { Inter, Poppins } from "next/font/google";
+import Link from "next/link";
 import "../globals.css";
 import GithubCalendar from "./GithubCalendar";
 import { motion } from "motion/react";
-import ItsMe from "../../public/assets/Me.png"
 import { ReactNode } from "react";
+import { Inter, Poppins } from "next/font/google";
 
 interface HomeClientProps {
   stravaSlot: ReactNode;
@@ -22,14 +22,19 @@ const poppins = Poppins({
 
 export default function HomeClient({ stravaSlot }: HomeClientProps) {
   return (
-    <main>
+    <main className="relative w-full h-screen">
+      <Image
+        src="/assets/Background.jpg"
+        fill
+        alt="Background Image"
+        className="object-cover object-center blur-[3px] brightness-[.2]"
+      />
       <div
         className="fixed inset-0 flex items-center justify-center"
         style={{ zIndex: 50 }}
       >
         <div className="h-[95vh] w-[95vw] overflow-y-auto p-4 md:p-6 lg:p-8">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 lg:gap-5 auto-rows-fr">
-            
             {/* Me Card */}
             <motion.div
               className="col-span-1 row-span-1 
@@ -37,11 +42,60 @@ export default function HomeClient({ stravaSlot }: HomeClientProps) {
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              <div className={`text-4xl ${interFontBold.className}`}>
-                <h1>renzo</h1>
-                <div className={`text-base opacity-50 ${poppins.className}`}>
-                  Information Systems
-                </div>
+              <div className={`text-base ${poppins.className}`}>
+                <h1 className={`text-6xl ${interFontBold.className}`}>renzo</h1>
+                <h2 className="opacity-50">Information Systems</h2>
+              </div>
+              {/* Socials */}
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  href="https://www.linkedin.com/in/jed-lawrence-engbino-629997372/"
+                  target="_blank"
+                >
+                  <Image
+                    src="/assets/icons/LinkedIn.png"
+                    width={24}
+                    height={24}
+                    alt="LinkedIn Icon"
+                    className="pointer-events-none"
+                  ></Image>
+                </Link>
+
+                <Link href="https://www.instagram.com/jlrebn/" target="_blank">
+                  <Image
+                    src="/assets/icons/Instagram.png"
+                    width={24}
+                    height={24}
+                    alt="Instagram Icon"
+                    className="pointer-events-none"
+                  ></Image>
+                </Link>
+
+                <Link
+                  href="https://discord.com/users/472141998565097472"
+                  target="_blank"
+                >
+                  <Image
+                    src="/assets/icons/Disc.png"
+                    width={24}
+                    height={24}
+                    alt="Discord Icon"
+                    className="pointer-events-none"
+                  ></Image>
+                </Link>
+
+                <Link
+                  href="https://www.facebook.com/jelo.binz/"
+                  target="_blank"
+                >
+                  <Image
+                    src="/assets/icons/Facebook.png"
+                    width={24}
+                    height={24}
+                    alt="Facebook Icon"
+                    className="pointer-events-none"
+                  ></Image>
+                </Link>
               </div>
             </motion.div>
 
@@ -51,42 +105,71 @@ export default function HomeClient({ stravaSlot }: HomeClientProps) {
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              <h2 className={`text-3xl mb-2 ${interFontBold.className}`}>
-                GitHub
-              </h2>
+              {/* GitHub Title with Logo */}
+              <div className="mb-2">
+                <Link
+                  href="https://github.com/renzoboyy"
+                  target="_blank"
+                  className="items-center gap-3 inline-flex"
+                >
+                  <Image
+                    src="/assets/icons/GitHub_White.png"
+                    width={28}
+                    height={28}
+                    alt="GitHub Icon"
+                  ></Image>
+                  <h2 className={`text-3xl ${interFontBold.className}`}>
+                    GitHub
+                  </h2>
+                </Link>
+              </div>
+
+              {/* GitHub Calendar */}
               <div className="overflow-hidden w-full">
-                <div className="font-sans">
+                <div className={`${poppins.className}`}>
                   <GithubCalendar />
                 </div>
               </div>
-              <a
-                href="https://github.com/renzoboyy"
-                target="_blank"
-                className={`text-xs underline text-blue-400 mt-2 ${poppins.className}`}
-              >
-                View Profile
-              </a>
             </motion.div>
 
-            {/* Strava */}
+            {/* Strava Card */}
             <motion.div
               className="col-span-1 row-span-1 
               bg-gray-900/90 backdrop-blur-sm rounded-2xl p-4 md:p-5 lg:p-6 flex flex-col justify-between"
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              <Image src="/assets/icons/Strava.png"
-              alt="strava icon"
-              width={100}
-              height={100}  />
+              {/* Strava Icon */}
+              <Link
+                href="https://www.strava.com/athletes/195991209"
+                target="_blank"
+                className="w-[125px] block"
+              >
+                <Image
+                  src="/assets/icons/Strava.png"
+                  width={125}
+                  height={125}
+                  alt="Strava Icon"
+                ></Image>
+              </Link>
+              {/* Me Image */}
               <Image
-                src={ItsMe}
+                src="/assets/Me.png"
                 alt="cute portrait of me"
-                className="absolute inset-0 w-full h-full object-cover opacity-40 transform -scale-x-100"
+                width={1000}
+                height={1000}
+                className="absolute inset-0 w-full h-full object-cover opacity-40 transform -scale-x-100 pointer-events-none"
               />
-
+              {/* Latest Strava Activity */}
               <div className="relative z-10">{stravaSlot}</div>
             </motion.div>
+
+            {/* Placeholder 2col Card */}
+            <motion.div
+              className="col-span-2 row-span-1 bg-gray-900/90 backdrop-blur-sm rounded-2xl p-4 md:p-5 lg:p-6 flex flex-col"
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            ></motion.div>
           </div>
         </div>
       </div>

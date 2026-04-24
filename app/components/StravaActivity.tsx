@@ -83,15 +83,19 @@ const activityType = typeLabels[activity.type] ?? activity.type;
         <p className="text-xs uppercase tracking-widest opacity-50 mb-1 drop-shadow-lg/30">
           Latest Workout
         </p>
-        <h3 className="text-xl font-bold leading-tight drop-shadow-lg/30">{activityType}</h3>
+        <h3 className="text-xl font-bold leading-tight drop-shadow-lg/30">
+          {activityType}
+        </h3>
         <p className="text-xs opacity-40 mt-2 drop-shadow-lg/30">
-        {new Date(activity.start_date).toLocaleDateString()}
-      </p>
+          {new Date(activity.start_date).toLocaleDateString()}
+        </p>
         <div className="flex gap-4 mt-4">
-          <div>
-            <p className="text-2xl font-bold drop-shadow-lg/30">{km}</p>
-            <p className="text-xs opacity-50 drop-shadow-lg/30">km</p>
-          </div>
+          {activityType === "Run" && (
+            <div>
+              <p className="text-2xl font-bold drop-shadow-lg/30">{km}</p>
+              <p className="text-xs opacity-50 drop-shadow-lg/30">km</p>
+            </div>
+          )}
           <div>
             <p className="text-2xl font-bold drop-shadow-lg/30">
               {mins}:{String(secs).padStart(2, "0")}
