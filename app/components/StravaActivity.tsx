@@ -8,6 +8,7 @@ interface StravaActivity {
   moving_time: number;
   type: string;
   start_date: string;
+  pace?: string;
 }
 
 
@@ -56,6 +57,16 @@ async function getLatestActivity(): Promise<StravaActivity | null> {
   }
 }
 
+function calcPace(moving_time: number, distance: number): string {
+  if (distance === 0) return "N/A";
+
+  const secondsPerKm = (moving_time / distance) * 1000;
+  const minutes = Math.floor(secondsPerKm / 60);
+  const seconds = Math.round(secondsPerKm % 60);
+
+  return `${minutes}:${seconds.toString().padStart(2, "0")} /km`;
+}
+
 export default async function StravaCard() {
   const activity = await getLatestActivity();
 
@@ -70,6 +81,7 @@ export default async function StravaCard() {
   const km = (activity.distance / 1000).toFixed(2);
   const mins = Math.floor(activity.moving_time / 60);
   const secs = activity.moving_time % 60;
+  const runPace = calcPace(activity.moving_time, activity.distance)
   
 const typeLabels: Record<string, string> = {
   WeightTraining: "Gym",
@@ -89,12 +101,18 @@ const activityType = typeLabels[activity.type] ?? activity.type;
         <p className="text-xs opacity-40 mt-2 drop-shadow-lg/30">
           {new Date(activity.start_date).toLocaleDateString()}
         </p>
-        <div className="flex gap-4 mt-4">
+        <div className="flex flex-wrap gap-10 mt-4">
           {activityType === "Run" && (
+            <>
             <div>
               <p className="text-2xl font-bold drop-shadow-lg/30">{km}</p>
               <p className="text-xs opacity-50 drop-shadow-lg/30">km</p>
             </div>
+            <div>
+                            <p className="text-2xl font-bold drop-shadow-lg/30">{runPace}</p>
+              <p className="text-xs opacity-50 drop-shadow-lg/30">pace</p>
+            </div>
+            </>
           )}
           <div>
             <p className="text-2xl font-bold drop-shadow-lg/30">

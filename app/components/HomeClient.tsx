@@ -143,7 +143,7 @@ export default function HomeClient({ stravaSlot }: HomeClientProps) {
               <Link
                 href="https://www.strava.com/athletes/195991209"
                 target="_blank"
-                className="w-[125px] block"
+                className="w-31.25 block"
               >
                 <Image
                   src="/assets/icons/Strava.png"
@@ -158,7 +158,7 @@ export default function HomeClient({ stravaSlot }: HomeClientProps) {
                 alt="cute portrait of me"
                 width={1000}
                 height={1000}
-                className="absolute inset-0 w-full h-full object-cover opacity-40 transform -scale-x-100 pointer-events-none"
+                className="absolute inset-0 w-full h-full object-cover object-top opacity-40 transform -scale-x-100 pointer-events-none"
               />
               {/* Latest Strava Activity */}
               <div className="relative z-10">{stravaSlot}</div>
