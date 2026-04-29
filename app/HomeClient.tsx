@@ -6,7 +6,6 @@ import GithubCalendar from "./components/GithubCalendar";
 import { motion } from "motion/react";
 import { ReactNode } from "react";
 import { Inter, Poppins } from "next/font/google";
-import { usePathname } from "next/navigation";
 
 interface HomeClientProps {
   stravaSlot: ReactNode;
@@ -46,7 +45,6 @@ const items = [
 ];
 
 export default function HomeClient({ stravaSlot }: HomeClientProps) {
-  const pathname = usePathname();
   return (
     <main className="relative w-full h-screen">
       <Image
@@ -139,7 +137,7 @@ export default function HomeClient({ stravaSlot }: HomeClientProps) {
                   className="items-center gap-3 inline-flex"
                 >
                   <Image
-                    src="/assets/icons/GitHub_White.png"
+                    src="/assets/icons/GitHub.png"
                     width={28}
                     height={28}
                     alt="GitHub Icon"
@@ -153,7 +151,7 @@ export default function HomeClient({ stravaSlot }: HomeClientProps) {
               {/* GitHub Calendar */}
               <div className="overflow-hidden w-full">
                 <div className={`${poppins.className}`}>
-                  <GithubCalendar key={pathname} />
+                  <GithubCalendar />
                 </div>
               </div>
             </motion.div>
