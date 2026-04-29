@@ -27,7 +27,7 @@ const items = [
       <div className="flex flex-col items-center gap-1 h-full">
         <h2 className={`text-sm ${interFontBold.className}`}>VerifAI</h2>
         <div className="relative w-full flex-1 rounded-lg overflow-hidden ring-2 ring-white/10">
-        <Link href="https://github.com/renzoboyy/Verifork" target="_blank">
+        <Link href="https://github.com/renzoboyy/Verifork">
           <Image
             src="/assets/projects/VerifAI.png"
             fill
