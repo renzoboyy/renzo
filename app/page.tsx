@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import HomeClient from "./components/HomeClient";
+import HomeClient from "./HomeClient";
 import StravaCard from "./components/StravaActivity";
 
 export default function Home() {

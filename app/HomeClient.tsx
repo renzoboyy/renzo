@@ -1,11 +1,12 @@
 "use client";
-import Image from "next/image"
+import Image from "next/image";
 import Link from "next/link";
-import "../globals.css";
-import GithubCalendar from "./GithubCalendar";
+import "./globals.css";
+import GithubCalendar from "./components/GithubCalendar";
 import { motion } from "motion/react";
 import { ReactNode } from "react";
 import { Inter, Poppins } from "next/font/google";
+import { usePathname } from "next/navigation";
 
 interface HomeClientProps {
   stravaSlot: ReactNode;
@@ -21,10 +22,21 @@ const poppins = Poppins({
 });
 
 const items = [
-  { id: 1,
+  {
+    id: 1,
     content: (
-      <div>
-        hello
+      <div className="flex flex-col items-center gap-1 h-full">
+        <h2 className={`text-sm ${interFontBold.className}`}>VerifAI</h2>
+        <div className="relative w-full flex-1 rounded-lg overflow-hidden ring-2 ring-white/10">
+        <Link href="https://github.com/renzoboyy/Verifork" target="_blank">
+          <Image
+            src="/assets/projects/VerifAI.png"
+            fill
+            alt="VerifAI"
+            className="object-cover"
+          />
+          </Link>
+        </div>
       </div>
     ),
   },
@@ -34,6 +46,7 @@ const items = [
 ];
 
 export default function HomeClient({ stravaSlot }: HomeClientProps) {
+  const pathname = usePathname();
   return (
     <main className="relative w-full h-screen">
       <Image
@@ -71,7 +84,7 @@ export default function HomeClient({ stravaSlot }: HomeClientProps) {
                     height={24}
                     alt="LinkedIn Icon"
                     className="pointer-events-none"
-                  ></Image>
+                  />
                 </Link>
 
                 <Link href="https://www.instagram.com/jlrebn/" target="_blank">
@@ -81,7 +94,7 @@ export default function HomeClient({ stravaSlot }: HomeClientProps) {
                     height={24}
                     alt="Instagram Icon"
                     className="pointer-events-none"
-                  ></Image>
+                  />
                 </Link>
 
                 <Link
@@ -94,7 +107,7 @@ export default function HomeClient({ stravaSlot }: HomeClientProps) {
                     height={24}
                     alt="Discord Icon"
                     className="pointer-events-none"
-                  ></Image>
+                  />
                 </Link>
 
                 <Link
@@ -107,7 +120,7 @@ export default function HomeClient({ stravaSlot }: HomeClientProps) {
                     height={24}
                     alt="Facebook Icon"
                     className="pointer-events-none"
-                  ></Image>
+                  />
                 </Link>
               </div>
             </motion.div>
@@ -130,7 +143,7 @@ export default function HomeClient({ stravaSlot }: HomeClientProps) {
                     width={28}
                     height={28}
                     alt="GitHub Icon"
-                  ></Image>
+                  />
                   <h2 className={`text-3xl ${interFontBold.className}`}>
                     GitHub
                   </h2>
@@ -140,7 +153,7 @@ export default function HomeClient({ stravaSlot }: HomeClientProps) {
               {/* GitHub Calendar */}
               <div className="overflow-hidden w-full">
                 <div className={`${poppins.className}`}>
-                  <GithubCalendar />
+                  <GithubCalendar key={pathname} />
                 </div>
               </div>
             </motion.div>
@@ -163,7 +176,7 @@ export default function HomeClient({ stravaSlot }: HomeClientProps) {
                   width={125}
                   height={125}
                   alt="Strava Icon"
-                ></Image>
+                />
               </Link>
               {/* Me Image */}
               <Image
@@ -177,9 +190,9 @@ export default function HomeClient({ stravaSlot }: HomeClientProps) {
               <div className="relative z-10">{stravaSlot}</div>
             </motion.div>
 
-            {/* Placeholder 2col Card */}
+            {/* Projects Card */}
             <motion.div
-              className="col-span-2 row-span-1 bg-black/70 backdrop-blur-sm rounded-2xl p-4 md:p-5 lg:p-6 flex flex-col"
+              className="col-span-2 row-span-1 bg-amber-950/70 backdrop-blur-sm rounded-2xl p-4 md:p-5 lg:p-6 flex flex-col"
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
@@ -190,7 +203,7 @@ export default function HomeClient({ stravaSlot }: HomeClientProps) {
                 {items.map((item) => (
                   <motion.div
                     key={item.id}
-                    className="bg-amber-950/70 mt-2 backdrop-blur-sm rounded-xl p-3 md:p-4 flex flex-col"
+                    className="bg-black/70 mt-2 backdrop-blur-sm rounded-xl p-2 md:p-3 flex flex-col"
                     whileHover={{ scale: 1.02 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   >
