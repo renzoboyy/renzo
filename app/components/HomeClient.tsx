@@ -20,6 +20,19 @@ const poppins = Poppins({
   weight: "300",
 });
 
+const items = [
+  { id: 1,
+    content: (
+      <div>
+        hello
+      </div>
+    ),
+  },
+  { id: 2, label: "Box 2" },
+  { id: 3, label: "Box 3" },
+  { id: 4, label: "Box 4" },
+];
+
 export default function HomeClient({ stravaSlot }: HomeClientProps) {
   return (
     <main className="relative w-full h-screen">
@@ -38,7 +51,7 @@ export default function HomeClient({ stravaSlot }: HomeClientProps) {
             {/* Me Card */}
             <motion.div
               className="col-span-1 row-span-1 
-                bg-gray-900/90 backdrop-blur-sm rounded-2xl p-4 md:p-5 lg:p-6 flex flex-col justify-between"
+                bg-black/70 backdrop-blur-sm rounded-2xl p-4 md:p-5 lg:p-6 flex flex-col justify-between"
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
@@ -101,7 +114,7 @@ export default function HomeClient({ stravaSlot }: HomeClientProps) {
 
             {/* GitHub Card */}
             <motion.div
-              className="col-span-2 row-span-1 bg-gray-900/90 backdrop-blur-sm rounded-2xl p-4 md:p-5 lg:p-6 flex flex-col"
+              className="col-span-2 row-span-1 bg-black/70 backdrop-blur-sm rounded-2xl p-4 md:p-5 lg:p-6 flex flex-col"
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
@@ -135,7 +148,7 @@ export default function HomeClient({ stravaSlot }: HomeClientProps) {
             {/* Strava Card */}
             <motion.div
               className="col-span-1 row-span-1 
-              bg-gray-900/90 backdrop-blur-sm rounded-2xl p-4 md:p-5 lg:p-6 flex flex-col justify-between"
+              bg-black/70 backdrop-blur-sm rounded-2xl p-4 md:p-5 lg:p-6 flex flex-col justify-between"
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
@@ -166,10 +179,26 @@ export default function HomeClient({ stravaSlot }: HomeClientProps) {
 
             {/* Placeholder 2col Card */}
             <motion.div
-              className="col-span-2 row-span-1 bg-gray-900/90 backdrop-blur-sm rounded-2xl p-4 md:p-5 lg:p-6 flex flex-col"
+              className="col-span-2 row-span-1 bg-black/70 backdrop-blur-sm rounded-2xl p-4 md:p-5 lg:p-6 flex flex-col"
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            ></motion.div>
+            >
+              <h2 className={`text-3xl ${interFontBold.className}`}>
+                Projects
+              </h2>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 h-full">
+                {items.map((item) => (
+                  <motion.div
+                    key={item.id}
+                    className="bg-amber-950/70 mt-2 backdrop-blur-sm rounded-xl p-3 md:p-4 flex flex-col"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  >
+                    {item.content}
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </div>
       </div>
