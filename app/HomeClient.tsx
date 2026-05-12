@@ -6,6 +6,7 @@ import GithubCalendar from "./components/GithubCalendar";
 import { motion } from "motion/react";
 import { ReactNode } from "react";
 import { Inter, Poppins } from "next/font/google";
+import { useNavigate } from "./hooks/useNavigate";
 
 interface HomeClientProps {
   stravaSlot: ReactNode;
@@ -20,31 +21,35 @@ const poppins = Poppins({
   weight: "300",
 });
 
-const items = [
-  {
-    id: 1,
-    content: (
-      <div className="flex flex-col items-center gap-1 h-full">
-        <h2 className={`text-sm ${interFontBold.className}`}>VerifAI</h2>
-        <div className="relative w-full flex-1 rounded-lg overflow-hidden ring-2 ring-white/10">
-        <Link href="https://github.com/renzoboyy/Verifork">
-          <Image
-            src="/assets/projects/VerifAI.png"
-            fill
-            alt="VerifAI"
-            className="object-cover"
-          />
-          </Link>
-        </div>
-      </div>
-    ),
-  },
-  { id: 2, label: "Box 2" },
-  { id: 3, label: "Box 3" },
-  { id: 4, label: "Box 4" },
-];
-
 export default function HomeClient({ stravaSlot }: HomeClientProps) {
+
+  const navigate = useNavigate();
+
+  const items = [
+    {
+      id: 1,
+      content: (
+        <div
+          onClick={() => navigate("/projects/verifai")}
+          className="cursor-pointer flex flex-col items-center gap-1 h-full"
+        >
+          <h2 className={`text-sm ${interFontBold.className}`}>VerifAI</h2>
+          <div className="relative w-full flex-1 rounded-lg overflow-hidden ring-2 ring-white/10">
+            <Image
+              src="/assets/projects/VerifAI/Logo.png"
+              fill
+              alt="VerifAI"
+              className="object-cover"
+            />
+          </div>
+        </div>
+      ),
+    },
+    { id: 2, label: "Box 2" },
+    { id: 3, label: "Box 3" },
+    { id: 4, label: "Box 4" },
+  ];
+
   return (
     <main className="relative w-full h-screen">
       <Image
