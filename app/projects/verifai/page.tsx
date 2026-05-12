@@ -3,9 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
-import { ReactNode } from "react";
 import { Inter, Poppins } from "next/font/google";
-import { useNavigate } from "./hooks/useNavigate";
 
 const interFontBold = Inter({
   subsets: ["latin"],
