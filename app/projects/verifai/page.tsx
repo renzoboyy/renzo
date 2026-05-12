@@ -2,7 +2,6 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import GithubCalendar from "./components/GithubCalendar";
 import { motion } from "motion/react";
 import { ReactNode } from "react";
 import { Inter, Poppins } from "next/font/google";
