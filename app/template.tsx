@@ -1,10 +1,41 @@
 // app/template.tsx
 "use client";
 import { motion } from "motion/react";
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
-// app/template.tsx
 export default function Template({ children }: { children: ReactNode }) {
+  const router = useRouter();
+
+  useEffect(() => {
+    const handlePopState = () => {
+      // Create overlay
+      const overlay = document.createElement("div");
+      overlay.style.cssText = `
+        position: fixed; inset: 0;
+        background: black;
+        z-index: 999;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        pointer-events: none;
+      `;
+      document.body.appendChild(overlay);
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          overlay.style.opacity = "1";
+        });
+      });
+
+      setTimeout(() => {
+        overlay.remove();
+      }, 500);
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, [router]);
+
   return (
     <>
       <motion.div
@@ -17,11 +48,11 @@ export default function Template({ children }: { children: ReactNode }) {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
-        onAnimationComplete={() => {
-          document.body.style.overflow = ""; // restore after transition
-        }}
         onAnimationStart={() => {
-          document.body.style.overflow = "hidden"; // hide scrollbar during transition
+          document.body.style.overflow = "hidden";
+        }}
+        onAnimationComplete={() => {
+          document.body.style.overflow = "";
         }}
       >
         {children}

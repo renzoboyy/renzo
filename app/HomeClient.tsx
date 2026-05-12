@@ -31,10 +31,9 @@ export default function HomeClient({ stravaSlot }: HomeClientProps) {
       content: (
         <div
           onClick={() => navigate("/projects/verifai")}
-          className="cursor-pointer flex flex-col items-center gap-1 h-full"
+          className="cursor-pointer flex absolute inset-0 rounded-xl overflow-hidden"
         >
-          <h2 className={`text-sm ${interFontBold.className}`}>VerifAI</h2>
-          <div className="relative w-full flex-1 rounded-lg overflow-hidden ring-2 ring-white/10">
+          <div className="relative w-full flex-1">
             <Image
               src="/assets/projects/VerifAI/Logo.png"
               fill
@@ -73,7 +72,7 @@ export default function HomeClient({ stravaSlot }: HomeClientProps) {
             >
               <div className={`text-base ${poppins.className}`}>
                 <h1 className={`text-6xl ${interFontBold.className}`}>renzo</h1>
-                <h2 className="opacity-50">Information Systems</h2>
+                <h2 className="opacity-50">Information Systems | Software Engineer</h2>
               </div>
               {/* Socials */}
               <div className="flex flex-wrap gap-3">
@@ -195,7 +194,7 @@ export default function HomeClient({ stravaSlot }: HomeClientProps) {
 
             {/* Projects Card */}
             <motion.div
-              className="col-span-2 row-span-1 bg-amber-950/70 backdrop-blur-sm rounded-2xl p-4 md:p-5 lg:p-6 flex flex-col"
+              className="col-span-2 row-span-1 bg-black/70 backdrop-blur-sm rounded-2xl p-4 md:p-5 lg:p-6 flex flex-col"
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
@@ -206,7 +205,7 @@ export default function HomeClient({ stravaSlot }: HomeClientProps) {
                 {items.map((item) => (
                   <motion.div
                     key={item.id}
-                    className="bg-black/70 mt-2 backdrop-blur-sm rounded-xl p-2 md:p-3 flex flex-col"
+                    className="relative overflow-hidden bg-black mt-2 backdrop-blur-sm rounded-xl flex flex-col"
                     whileHover={{ scale: 1.02 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   >
