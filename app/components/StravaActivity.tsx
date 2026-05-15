@@ -99,7 +99,7 @@ const activityType = typeLabels[activity.type] ?? activity.type;
           {activityType}
         </h3>
         <p className="text-xs opacity-40 mt-2 drop-shadow-lg/30">
-          {new Date(activity.start_date).toLocaleDateString()}
+          {new Date(activity.start_date).toLocaleDateString("en-PH", { timeZone: "Asia/Manila" })}
         </p>
         <div className="flex flex-wrap gap-10 mt-4">
           {activityType === "Run" && (
