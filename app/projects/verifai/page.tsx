@@ -15,7 +15,10 @@ const interFont = Inter({
 
 export default function VerifAI() {
   return (
-    <main
+    <motion.main
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.4 }}
       className="w-full min-h-screen bg-black text-white flex justify-center py-10
       scrollbar-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
     >
@@ -105,14 +108,12 @@ export default function VerifAI() {
         </h2>
 
         {/* GitHub link */}
-        <h3
-          className={`text-right mt-5 text-sm ${interFont.className}`}
-        >
+        <h3 className={`text-right mt-5 text-sm ${interFont.className}`}>
           <Link href="https://github.com/renzoboyy/Verifork" target="_blank">
             View on GitHub
           </Link>
         </h3>
       </motion.div>
-    </main>
+    </motion.main>
   );
 }

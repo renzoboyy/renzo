@@ -304,7 +304,8 @@ export default function HomeClient({ stravaSlot }: HomeClientProps) {
                 ].map((skill, idx) => (
                   <motion.div
                     key={idx}
-                    className="relative overflow-hidden bg-black/80 backdrop-blur-sm rounded-xl p-4 flex flex-col justify-between"
+                    className="relative overflow-hidden bg-black/80 rounded-xl p-4 flex flex-col justify-between"
+                    style={{ willChange: "transform" }}
                     whileHover={{ scale: 1.04 }}
                     transition={{
                       type: "spring",
