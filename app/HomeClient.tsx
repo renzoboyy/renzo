@@ -4,13 +4,9 @@ import Link from "next/link";
 import "./globals.css";
 import GithubCalendar from "./components/GithubCalendar";
 import { motion } from "motion/react";
-import { ReactNode, useState } from "react";
+import { useState } from "react";
 import { Inter, Poppins } from "next/font/google";
 import { useNavigate } from "./hooks/useNavigate";
-
-interface HomeClientProps {
-  stravaSlot: ReactNode;
-}
 
 const interFontBold = Inter({
   subsets: ["latin"],
@@ -21,7 +17,7 @@ const poppins = Poppins({
   weight: "300",
 });
 
-export default function HomeClient({ stravaSlot }: HomeClientProps) {
+export default function HomeClient() {
   const navigate = useNavigate();
   const [overlayMinimized, setOverlayMinimized] = useState(false);
 
@@ -90,10 +86,10 @@ export default function HomeClient({ stravaSlot }: HomeClientProps) {
           className="w-full h-[95vh] overflow-y-auto p-3 md:w-[95vw] md:p-6 lg:p-8
       scrollbar-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
         >
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 lg:gap-5 md:h-full md:auto-rows-fr">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 lg:gap-5 md:h-full md:auto-rows-fr md:grid-flow-dense">
             {/* Me Card */}
             <motion.div
-              className="col-span-1 row-span-1
+              className="col-span-1 row-span-1 overflow-hidden
                   bg-black/70 backdrop-blur-sm rounded-2xl p-4 md:p-5 lg:p-6 flex flex-col justify-between"
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -161,7 +157,7 @@ export default function HomeClient({ stravaSlot }: HomeClientProps) {
 
             {/* GitHub Card — spans 2 cols on md+ */}
             <motion.div
-              className="col-span-1 md:col-span-2 row-span-1 bg-black/70 backdrop-blur-sm rounded-2xl p-4 md:p-5 lg:p-6 flex flex-col"
+              className="col-span-1 md:col-span-2 row-span-1 overflow-hidden bg-black/70 backdrop-blur-sm rounded-2xl p-4 md:p-5 lg:p-6 flex flex-col"
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
@@ -193,43 +189,10 @@ export default function HomeClient({ stravaSlot }: HomeClientProps) {
               </div>
             </motion.div>
 
-            {/* Strava Card */}
-            <motion.div
-              className="col-span-1 row-span-1 relative
-                  bg-black/70 backdrop-blur-sm rounded-2xl p-4 md:p-5 lg:p-6 flex flex-col justify-between overflow-hidden"
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            >
-              <Link
-                href="https://www.strava.com/athletes/195991209"
-                target="_blank"
-                className="block w-fit"
-              >
-                <Image
-                  src="/assets/icons/Strava.png"
-                  width={100}
-                  height={100}
-                  alt="Strava Icon"
-                />
-              </Link>
-
-              {/* Portrait — decorative */}
-              <Image
-                src="/assets/Me.png"
-                alt=""
-                aria-hidden="true"
-                width={1000}
-                height={1000}
-                className="absolute inset-0 w-full h-full object-cover object-top opacity-40 transform -scale-x-100 pointer-events-none"
-              />
-
-              {/* Latest Strava Activity */}
-              <div className="relative z-10">{stravaSlot}</div>
-            </motion.div>
-
+          
             {/* Projects Card — spans 2 cols on md+ */}
             <motion.div
-              className="col-span-1 md:col-span-2 row-span-1 bg-black/70 backdrop-blur-sm rounded-2xl p-4 md:p-5 lg:p-6 flex flex-col"
+              className="col-span-1 md:col-span-2 row-span-1 overflow-hidden bg-black/70 backdrop-blur-sm rounded-2xl p-4 md:p-5 lg:p-6 flex flex-col"
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
@@ -260,7 +223,7 @@ export default function HomeClient({ stravaSlot }: HomeClientProps) {
 
             {/* Skills Card — col span 2, row span 2 */}
             <motion.div
-              className="col-span-1 md:col-span-2 row-span-2 bg-black/70 backdrop-blur-sm rounded-2xl p-4 md:p-5 lg:p-6 flex flex-col"
+              className="col-span-1 md:col-span-2 row-span-2 overflow-hidden bg-black/70 backdrop-blur-sm rounded-2xl p-4 md:p-5 lg:p-6 flex flex-col"
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
